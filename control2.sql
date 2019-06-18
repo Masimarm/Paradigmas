@@ -77,12 +77,12 @@ INSERT INTO CIUDAD(nom_ciu,poblacion_ciu)
 -- EMBARQUE (relaciones)
 -- ======================
 
--- INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
--- 	VALUES(1,1,"30.2",1,"PUQ");
+INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
+	VALUES(1,1,"30.2",1,"Punta Arenas");
 
 
--- INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
--- 	VALUES(2,2,"10.6",2,"SCL");
+INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
+ 	VALUES(2,2,"10.6",2,"Santiago");
 
 -- =================================
 -- REALIZACIÓN DE CONSULTAS BÁSICAS
