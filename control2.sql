@@ -39,7 +39,7 @@ CREATE TABLE EMBARQUE(
 
 CREATE TABLE EMB_CLI(
 	id_emb integer,
-	id_cli integer
+	id_cli integer,
 	FOREIGN KEY (id_emb) REFERENCES EMBARQUE(id_emb),
 	FOREIGN KEY (id_cli) REFERENCES CLIENTE(id_cli)
 );
@@ -62,9 +62,9 @@ CREATE TABLE EMB_CIU(
 -- =================================
 -- INSERCIÓN DE REGISTROS
 -- =================================
-
 -- =======
 -- CLIENTE
+
 -- =======
 
 INSERT INTO CLIENTE(id_cli,nom_cli,sueldo_anual_cli)
@@ -112,13 +112,13 @@ INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
 -- Por ejemplo, esto seria para el cliente nicole que envio algo a Pta Arenas a través del camión
 -- manejado por Juanito
 INSERT INTO EMB_CLI(id_emb,id_cli)
-	VALUES(1,1)
+	VALUES(1,1);
 
 INSERT INTO EMB_CAM(id_emb,id_cam)
-	VALUES(1,2)
+	VALUES(1,2);
 
 INSERT INTO EMB_CIU(id_emb,nom_ciu)
-	VALUES(1,"Punta Arenas")
+	VALUES(1,"Punta Arenas");
 
 
 -- =================================
