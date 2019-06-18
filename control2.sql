@@ -28,7 +28,7 @@ CREATE TABLE CIUDAD(
 CREATE TABLE EMBARQUE(
 	id_emb integer,
 	id_cli_emb integer,
-	peso_emb varchar(255),
+	peso_emb float(53),
 	id_camion_emb integer,
 	destino_emb varchar(255),
 	PRIMARY KEY (id_emb),
@@ -103,7 +103,10 @@ INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
 
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
- 	VALUES(2,2,"10.6",2,"Santiago");
+ 	VALUES(2,2,"10000000.6",2,"Santiago");
+
+INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
+ 	VALUES(3,2,"1000.6",1,"Punta Arenas");
 
 -- ===========================
 -- RELACIONES DEL EMBARQUE 1
@@ -125,10 +128,35 @@ INSERT INTO EMB_CIU(id_emb,nom_ciu)
 -- REALIZACIÓN DE CONSULTAS BÁSICAS
 -- =================================
 
-SELECT * FROM CLIENTE;
+--SELECT * FROM CLIENTE;
 
-SELECT * FROM CAMION;
+--SELECT * FROM CAMION;
 
-SELECT * FROM CIUDAD;
+--SELECT * FROM CIUDAD;
 
-SELECT * FROM EMBARQUE;
+--SELECT * FROM EMBARQUE;
+
+--  Parte 3: ejercicios
+
+--1)
+SELECT nom_cli
+FROM CLIENTE, EMBARQUE
+WHERE id_cli = id_cli_emb AND destino_emb = 'Punta Arenas';
+
+--2)
+SELECT nom_cli, sueldo_anual_cli
+FROM CLIENTE, EMBARQUE
+WHERE id_cli = id_cli_emb AND peso_emb > 100000; --en kilogramos, 100 toneladas == 100000
+
+--3)
+
+--4)
+SELECT c.nom_cli
+FROM CLIENTE c
+WHERE 1 = (
+    SELECT count(DISTINCT e.destino_emb)
+    FROM EMBARQUE e
+    WHERE c.id_cli = e.id_cli_emb
+);
+
+--5)
