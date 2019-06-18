@@ -37,6 +37,27 @@ CREATE TABLE EMBARQUE(
 	FOREIGN KEY (id_camion_emb) REFERENCES CAMION(id_cam)
 );
 
+CREATE TABLE EMB_CLI(
+	id_emb integer,
+	id_cli integer
+	FOREIGN KEY (id_emb) REFERENCES EMBARQUE(id_emb),
+	FOREIGN KEY (id_cli) REFERENCES CLIENTE(id_cli)
+);
+
+CREATE TABLE EMB_CAM(
+	id_emb integer,
+	id_cam integer,
+	FOREIGN KEY (id_emb) REFERENCES EMBARQUE(id_emb),
+	FOREIGN KEY (id_cam) REFERENCES CAMION(id_cam)
+);
+
+CREATE TABLE EMB_CIU(
+	id_emb integer,
+	nom_ciu varchar(255),
+	prom_peso varchar(255),
+	FOREIGN KEY (id_emb) REFERENCES EMBARQUE(id_emb),
+	FOREIGN KEY (nom_ciu) REFERENCES CIUDAD(nom_ciu)	
+);
 
 -- =================================
 -- INSERCIÓN DE REGISTROS
@@ -83,6 +104,22 @@ INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
  	VALUES(2,2,"10.6",2,"Santiago");
+
+-- ===========================
+-- RELACIONES DEL EMBARQUE 1
+-- ===========================
+
+-- Por ejemplo, esto seria para el cliente nicole que envio algo a Pta Arenas a través del camión
+-- manejado por Juanito
+INSERT INTO EMB_CLI(id_emb,id_cli)
+	VALUES(1,1)
+
+INSERT INTO EMB_CAM(id_emb,id_cam)
+	VALUES(1,2)
+
+INSERT INTO EMB_CIU(id_emb,nom_ciu)
+	VALUES(1,"Punta Arenas")
+
 
 -- =================================
 -- REALIZACIÓN DE CONSULTAS BÁSICAS
