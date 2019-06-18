@@ -12,7 +12,6 @@ CREATE TABLE CLIENTE(
 	PRIMARY KEY (id_cli)
 );
 
-
 CREATE TABLE CAMION(
 	id_cam integer,
 	nombre_chofer_cam varchar(255),
@@ -37,41 +36,27 @@ CREATE TABLE EMBARQUE(
 	FOREIGN KEY (id_camion_emb) REFERENCES CAMION(id_cam)
 );
 
-CREATE TABLE EMB_CLI(
-	id_emb integer,
-	id_cli integer,
-	FOREIGN KEY (id_emb) REFERENCES EMBARQUE(id_emb),
-	FOREIGN KEY (id_cli) REFERENCES CLIENTE(id_cli)
-);
-
-CREATE TABLE EMB_CAM(
-	id_emb integer,
-	id_cam integer,
-	FOREIGN KEY (id_emb) REFERENCES EMBARQUE(id_emb),
-	FOREIGN KEY (id_cam) REFERENCES CAMION(id_cam)
-);
-
-CREATE TABLE EMB_CIU(
-	id_emb integer,
-	nom_ciu varchar(255),
-	prom_peso varchar(255),
-	FOREIGN KEY (id_emb) REFERENCES EMBARQUE(id_emb),
-	FOREIGN KEY (nom_ciu) REFERENCES CIUDAD(nom_ciu)	
-);
-
 -- =================================
 -- INSERCIÓN DE REGISTROS
 -- =================================
 -- =======
 -- CLIENTE
-
 -- =======
 
 INSERT INTO CLIENTE(id_cli,nom_cli,sueldo_anual_cli)
-	VALUES (1,"nicole martín","$1.000.000");
+	VALUES (1,"Nicole Martín","$1.000.000");
 
 INSERT INTO CLIENTE(id_cli,nom_cli,sueldo_anual_cli)
-	VALUES (2,"vicente hernández","$1.000.000");
+	VALUES (2,"Vicente Hernández","$1.000.000");
+
+INSERT INTO CLIENTE(id_cli,nom_cli,sueldo_anual_cli)
+	VALUES (3,"Diego Salazar","$2.500.000");
+
+INSERT INTO CLIENTE(id_cli,nom_cli,sueldo_anual_cli)
+	VALUES (4,"Isaías Cárdenas","$2.300.000");
+
+INSERT INTO CLIENTE(id_cli,nom_cli,sueldo_anual_cli)
+	VALUES (5,"Bastián Vera","$10.000.000");
 
 
 -- ========
@@ -84,6 +69,15 @@ INSERT INTO CAMION(id_cam,nombre_chofer_cam)
 INSERT INTO CAMION(id_cam,nombre_chofer_cam)
 	VALUES(2,"Juanito");
 
+INSERT INTO CAMION(id_cam,nombre_chofer_cam)
+	VALUES(3,"Maria");
+
+INSERT INTO CAMION(id_cam,nombre_chofer_cam)
+	VALUES(4,"Anita");
+
+INSERT INTO CAMION(id_cam,nombre_chofer_cam)
+	VALUES(5,"Dieguito");
+
 -- ========
 -- CIUDAD
 -- ========
@@ -94,112 +88,119 @@ INSERT INTO CIUDAD(nom_ciu,poblacion_ciu)
 INSERT INTO CIUDAD(nom_ciu,poblacion_ciu)
 	VALUES("Santiago","Las Rejas");
 
+INSERT INTO CIUDAD(nom_ciu,poblacion_ciu)
+	VALUES("Concepcion","18 Septiembre");
+
+INSERT INTO CIUDAD(nom_ciu,poblacion_ciu)
+	VALUES("Valparaiso","La Caleta");
+
+INSERT INTO CIUDAD(nom_ciu,poblacion_ciu)
+	VALUES("Huilo Huilo","Neltume");
+
 -- ======================
 -- EMBARQUE (relaciones)
 -- ======================
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
-	VALUES(1,1,"30.2",1,"Punta Arenas");
+	VALUES(1,1,"30.2",4,"Punta Arenas");
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
- 	VALUES(2,2,"1000.6",2,"Punta Arenas");
+ 	VALUES(2,2,"1000.6",4,"Santiago");
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
- 	VALUES(3,2,"10000000.6",2,"Santiago");
+ 	VALUES(3,2,"10000000.6",4,"Concepcion");
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
-	VALUES(4,2,"3000.2",2,"Santiago");
+	VALUES(4,2,"34.6",4,"Valparaiso");
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
-	VALUES(5,2,"3000.2",2,"Santiago");
+	VALUES(5,3,"87.3",4,"Huilo Huilo");
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
-	VALUES(6,2,"3000.2",2,"Santiago");
+	VALUES(6,4,"234567890.87",2,"Santiago");
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
-	VALUES(7,2,"3000.2",2,"Santiago");
+	VALUES(7,2,"234454.23",2,"Valparaiso");
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
-	VALUES(8,2,"3000.2",2,"Santiago");
+	VALUES(8,2,"76543.23",3,"Valparaiso");
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
-	VALUES(9,2,"3000.2",2,"Santiago");
+	VALUES(9,2,"2.54",2,"Concepcion");
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
-	VALUES(10,2,"3000.2",2,"Santiago");
+	VALUES(10,3,"8.32",2,"Huilo Huilo");
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
-	VALUES(11,2,"3000.2",2,"Santiago");
+	VALUES(11,5,"200456.25",2,"Punta Arenas");
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
-	VALUES(12,2,"3000.2",2,"Santiago");
+	VALUES(12,2,"324.34",1,"Santiago");
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
- 	VALUES(13,2,"1000.6",2,"Punta Arenas");
+ 	VALUES(13,1,"3.14",1,"Punta Arenas");
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
- 	VALUES(14,2,"1000.6",2,"Punta Arenas");
+ 	VALUES(14,2,"123.76",3,"Valparaiso");
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
- 	VALUES(15,2,"1000.6",2,"Punta Arenas");
+ 	VALUES(15,4,"654.45",5,"Valparaiso");
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
- 	VALUES(16,2,"1000.6",2,"Punta Arenas");
+ 	VALUES(16,4,"2378.54",5,"Valparaiso");
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
- 	VALUES(17,2,"1000.6",2,"Punta Arenas");
+ 	VALUES(17,2,"543.34",2,"Concepcion");
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
- 	VALUES(18,2,"1000.6",2,"Punta Arenas");
+ 	VALUES(18,5,"0.34",1,"Concepcion");
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
- 	VALUES(19,2,"1000.6",2,"Punta Arenas");
+ 	VALUES(19,5,"3455.23",5,"Punta Arenas");
 
 INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
- 	VALUES(20,2,"1000.6",2,"Punta Arenas");
+ 	VALUES(20,2,"1000.6",4,"Santiago");
 
+INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
+ 	VALUES(21,2,"12343.76",3,"Valparaiso");
 
--- ===========================
--- RELACIONES DEL EMBARQUE 1
--- ===========================
+INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
+ 	VALUES(22,4,"5432.45",5,"Valparaiso");
 
--- Por ejemplo, esto seria para el cliente nicole que envio algo a Pta Arenas a través del camión
--- manejado por Juanito
-INSERT INTO EMB_CLI(id_emb,id_cli)
-	VALUES(1,1);
+INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
+ 	VALUES(23,5,"2378.54",2,"Valparaiso");
 
-INSERT INTO EMB_CAM(id_emb,id_cam)
-	VALUES(1,2);
-
-INSERT INTO EMB_CIU(id_emb,nom_ciu)
-	VALUES(1,"Punta Arenas");
+INSERT INTO EMBARQUE(id_emb,id_cli_emb,peso_emb,id_camion_emb,destino_emb)
+ 	VALUES(24,5,"232478.54",1,"Valparaiso");
 
 
 -- =================================
 -- REALIZACIÓN DE CONSULTAS BÁSICAS
 -- =================================
 
---SELECT * FROM CLIENTE;
+-- SELECT * FROM CLIENTE;
 
---SELECT * FROM CAMION;
+-- SELECT * FROM CAMION;
 
---SELECT * FROM CIUDAD;
+-- SELECT * FROM CIUDAD;
 
---SELECT * FROM EMBARQUE;
+-- SELECT * FROM EMBARQUE;
 
---  Parte 3: ejercicios
+-- ===================================
+-- REALIZACIÓN CONSULTAS SOLICITADAS
+-- ===================================
 
---1)
+-- PREGUNTA 1
 SELECT DISTINCT nom_cli
 FROM CLIENTE, EMBARQUE
 WHERE id_cli = id_cli_emb AND destino_emb = 'Punta Arenas';
 
---2)
+-- PREGUNTA 2
 SELECT DISTINCT nom_cli, sueldo_anual_cli
 FROM CLIENTE, EMBARQUE
-WHERE id_cli = id_cli_emb AND peso_emb > 100000; --en kilogramos, 100 toneladas == 100000
+WHERE id_cli = id_cli_emb AND peso_emb > 100000; -- en kilogramos, 100 toneladas == 100000
 
---3)
+-- PREGUNTA 3
 SELECT c.nombre_chofer_cam
 FROM CAMION c
 WHERE (
@@ -211,7 +212,7 @@ WHERE (
     WHERE c.id_cam = e.id_camion_emb
 );
 
---4)
+-- PREGUNTA 4
 SELECT c.nom_cli
 FROM CLIENTE c
 WHERE 1 = (
@@ -220,12 +221,15 @@ WHERE 1 = (
     WHERE c.id_cli = e.id_cli_emb
 );
 
---5)
+-- PREGUNTA 5
 
-SELECT c.nom_ciu
-FROM CIUDAD c
-WHERE 10 <= (
-	SELECT count(e.id_emb)
-	FROM EMBARQUE e
-	WHERE c.nom_ciu = e.destino_emb
-);
+SELECT avg(E.peso_emb)
+FROM EMBARQUE E
+WHERE E.destino_emb = 
+	(SELECT c.nom_ciu
+	FROM CIUDAD c
+	WHERE 10 <= (
+		SELECT count(e.id_emb)
+		FROM EMBARQUE e
+		WHERE c.nom_ciu = e.destino_emb and e.peso_emb
+		));
